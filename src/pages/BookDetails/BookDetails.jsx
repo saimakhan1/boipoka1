@@ -1,6 +1,10 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import { addToStoredDB } from "../../utility/addToDB";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -18,6 +22,11 @@ const BookDetails = () => {
     //array or collection
     //if book already exists, then show and alert
     //if book does not exist, then push it in the collection or array
+    MySwal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success",
+    });
     addToStoredDB(id);
   };
   return (
